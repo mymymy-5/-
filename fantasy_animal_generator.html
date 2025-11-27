@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>空想動物プロンプト生成ツール</title>
+<style>
+  :root{
+    --card-bg:#fff;
+    --page-bg:#f5f5f5;
+    --accent:#2563eb;
+    --muted:#6b7280;
+    --radius:14px;
+    --font: "Hiragino Kaku Gothic ProN", "Yu Gothic", "メイリオ", "Segoe UI", Roboto, sans-serif;
+  }
+  body{
+    margin:0; padding:24px;
+    background:var(--page-bg);
+    font-family:var(--font);
+  }
+  .container{
+    max-width:960px;
+    margin:0 auto;
+  }
+  .card{
+    background:var(--card-bg);
+    padding:24px;
+    border-radius:var(--radius);
+    box-shadow:0 8px 24px rgba(0,0,0,0.08);
+  }
+  h1{margin-top:0;font-size:22px;}
+  label{font-weight:600; display:block; margin-bottom:6px;}
+  input{
+    width:100%; padding:12px;
+    border-radius:8px; border:1px solid #ddd;
+    font-size:15px; margin-bottom:16px;
+  }
+  textarea{
+    width:100%; height:220px;
+    padding:14px; font-size:14px;
+    border-radius:10px; border:1px solid #ddd;
+    font-family:monospace;
+    white-space:pre-wrap;
+  }
+  .buttons{display:flex; gap:12px; margin-top:14px;}
+  button{
+    padding:10px 16px;
+    border-radius:10px;
+    border:0; cursor:pointer;
+    font-size:14px; font-weight:600;
+    background:var(--accent); color:#fff;
+    box-shadow:0 4px 14px rgba(37,99,235,0.2);
+  }
+  button.secondary{
+    background:#fff; color:var(--muted);
+    border:1px solid #ddd;
+    box-shadow:none;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <h1>空想動物プロンプト生成ツール</h1>
+    <label>動物A</label>
+    <input id="a" placeholder="例: rabbit (ウサギ)" />
+
+    <label>動物B</label>
+    <input id="b" placeholder="例: hummingbird (ハチドリ)" />
+
+    <label>生成プロンプト</label>
+    <textarea id="prompt"></textarea>
+
+    <div class="buttons">
+      <button onclick="generate()">プロンプト生成</button>
+      <button class="secondary" onclick="copyText()">コピー</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function generate(){
+  const a = document.getElementById('a').value.trim() || "animal A";
+  const b = document.getElementById('b').value.trim() || "animal B";
+
+  const text = `Create a whimsical hybrid creature by combining two animals: "${a}" and "${b}".
+Style: pop, clean line art.
+Texture: crisp and well-defined.
+Key features: very large eyes with long eyelashes.
+Composition: centered subject, full-body visible, simple white background.
+Color: flat and vibrant; minimal shading.
+Lines: smooth, clear.
+Mood: cute and friendly.`;
+
+  document.getElementById('prompt').value = text;
+}
+
+function copyText(){
+  const txt = document.getElementById('prompt').value;
+  navigator.clipboard.writeText(txt).then(()=>{
+    alert("プロンプトをコピーしました！");
+  });
+}
+</script>
+</body>
+</html>
