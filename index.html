@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>空想動物ジェネレーター</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>空想動物ジェネレーター</h1>
+
+  <div class="form">
+    <label>動物1：<input id="animal1" placeholder="例：ライオン"></label>
+    <label>動物2：<input id="animal2" placeholder="例：フクロウ"></label>
+    <label>特徴：<input id="feature" placeholder="例：大きな目、長いまつげ、ポップ"></label>
+    <button onclick="generate()">生成する</button>
+  </div>
+
+  <div id="loading" class="hidden">生成中… 少し待ってね！</div>
+
+  <div id="result"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
