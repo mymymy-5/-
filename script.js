@@ -1,4 +1,4 @@
-// ★ここに OpenAI APIキーを入れる
+AIzaSyCjcLLPmrwR9gGrg3b48BuIKzSxo6HP9zA
 const OPENAI_API_KEY = "YOUR_API_KEY_HERE";
 
 async function generate() {
